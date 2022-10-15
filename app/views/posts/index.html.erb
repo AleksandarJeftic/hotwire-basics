@@ -1,0 +1,20 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Posts</h1>
+
+<%= link_to "New post", new_post_path, data: { turbo_frame: "modal" } %>
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col" colspan="3">Body</th>
+    </tr>
+  </thead>
+  <tbody id="posts">
+    <% @posts.each do |post| %>
+      <%= render 'post_row', post: post %>
+    <% end %>
+  </tbody>
+</table>
+

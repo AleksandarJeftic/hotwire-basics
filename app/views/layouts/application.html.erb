@@ -14,10 +14,13 @@
     <nav class="navbar navbar-light bg-light">
       <a class="navbar-brand" href="#">Navbar</a>
     </nav>
-    <div class="row">
-      <div class="col-sm-1 bg-info">Sidebar</div>
-      <div class="col-sm-11">
-        <%= yield %>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-1 bg-info">Sidebar</div>
+        <div class="col-sm-11">
+        <%= turbo_frame_tag :modal %>
+          <%= yield %>
+        </div>
       </div>
     </div>
   </body>

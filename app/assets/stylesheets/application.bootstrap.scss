@@ -1,2 +1,32 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
+// #modal {
+//   position: fixed;
+//   right: 0px;
+//   top: 56px;
+//   bottom: 0px;
+//   background-color: rgb(151, 14, 14);
+//   max-width: 840px;
+//   width: 90%;
+//   transition: right 0.3s;
+//   &.hidden {
+//     right: -840px;
+//   }
+// }
+#modal {
+  position: absolute;
+  right: 0px;
+  top: 56px;
+  transition: transform 0.3s;
+  &.hidden {
+    transform: translateX(100%);
+  }
+  &[src] {
+    bottom: 0px;
+    background-color: rgb(139, 39, 39);
+    max-width: 840px;
+    width: calc(100% - 15px);
+    transform: translateX(0);
+  }
+}
