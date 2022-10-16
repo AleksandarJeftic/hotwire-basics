@@ -2,6 +2,6 @@
   <th scope="row"><%= post.id %></th>
   <td><%= post.title %></td>
   <td><%= post.body %></td>
-  <td><%= link_to "Show this post", post %></td>
+  <td><%= link_to "Show this post", post, data: { turbo_frame: "modal" } %></td>
   <td><%= link_to "Edit Post", edit_post_path(post), data: { turbo_frame: "modal" } %></td>
 </tr>

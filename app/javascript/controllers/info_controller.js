@@ -7,9 +7,13 @@ export default class extends Controller {
       this.hideModal()
     }
   }
+
+  close(){
+    this.hideModal()
+  }
   
   hideModal(){
-    this.element.parentElement.classList.add("hidden")
-    this.element.parentElement.removeAttribute("src")
+    this.element.closest('#modal').classList.add("hidden")
+    this.element.closest('#modal').removeAttribute("src")
   }
 }

@@ -1,4 +1,7 @@
 <%= turbo_frame_tag :modal do %>
+  <div class="d-flex justify-content-end">
+    <%= render 'frame_header' %>
+  </div>
   <div data-controller="info" data-action="turbo:submit-end->info#submitEnd">
     <h1>New post</h1>
 
