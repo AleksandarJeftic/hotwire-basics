@@ -10,8 +10,8 @@
       <br>
 
       <div>
-        <%= link_to "Show this post", @post %> |
-        <%= link_to "Back to posts", posts_path %>
+        <%= link_to "Show this post", @post %>
+        <%= button_to "Destroy this post", post_path(@post), method: :delete %>
       </div>
     </div>
 <% end %>

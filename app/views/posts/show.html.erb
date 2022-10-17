@@ -6,10 +6,8 @@
 
   <%= render @post %>
 
-  <div>
-    <%= link_to "Edit this post", edit_post_path(@post) %> |
-    <%= link_to "Back to posts", posts_path %>
-
-    <%= link_to "Destroy this post", post_path(@post), data: { "turbo-method": :delete } %>
+  <div data-controller="info" data-action="turbo:submit-end->info#submitEnd">
+    <%= link_to "Edit this post", edit_post_path(@post) %> | 
+    <%= button_to "Destroy this post", post_path(@post), method: :delete %>
   </div>
 <% end %>
