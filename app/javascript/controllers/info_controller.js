@@ -3,6 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static classes = [ "loading" ]
   submitEnd(e){
+    console.log(e)
     if (e.detail.success){
       this.hideModal()
     }
