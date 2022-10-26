@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.order(created_at: :asc)
+    @pagy, @posts = pagy(Post.order(created_at: :asc), items: 10)
   end
 
   # GET /posts/1 or /posts/1.json
