@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    filtered = Post.where("title LIKE ?", "%#{params[:filter]}%").all
+    filtered = Post.where("title LIKE ?", "%#{params[:filter]}%").order("#{params[:column]} #{params[:direction]}")
     @pagy, @posts = pagy(filtered.all, items: 10)
   end
 
