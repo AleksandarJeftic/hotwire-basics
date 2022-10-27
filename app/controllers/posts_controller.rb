@@ -3,7 +3,8 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @pagy, @posts = pagy(Post.order(created_at: :asc), items: 10)
+    filtered = Post.where("title LIKE ?", "%#{params[:filter]}%").all
+    @pagy, @posts = pagy(filtered.all, items: 10)
   end
 
   # GET /posts/1 or /posts/1.json
@@ -26,7 +27,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         format.turbo_stream do
-          render turbo_stream: turbo_stream.append("posts", partial: "posts/post_row", locals: { post: @post })
+          render turbo_stream: turbo_stream.append("posts_table", partial: "posts/post_row", locals: { post: @post })
         end
         format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
@@ -42,7 +43,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.update(post_params)
         format.turbo_stream do
-          render turbo_stream: turbo_stream.replace("list_post_#{@post.id}", partial: "posts/post_row", locals: { post: @post })
+          render turbo_stream: turbo_stream.replace("post_#{@post.id}", partial: "posts/post_row", locals: { post: @post })
         end
         format.html { redirect_to post_url(@post), notice: "Post was successfully updated." }
         format.json { render :show, status: :ok, location: @post }
@@ -58,7 +59,7 @@ class PostsController < ApplicationController
     @post.destroy
 
     respond_to do |format|
-      format.turbo_stream { render turbo_stream: turbo_stream.remove("list_post_#{@post.id}") }
+      format.turbo_stream
       format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
       format.json { head :no_content }
     end

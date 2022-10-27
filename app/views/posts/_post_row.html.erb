@@ -1,7 +1,7 @@
-<tr id="list_<%= dom_id post %>">
+<tr id="<%= dom_id post %>">
   <td><%= post.title %></td>
   <td><%= post.body %></td>
-  <td><%= link_to "Show this post", post, data: { turbo_frame: "modal" }, class: 'btn btn-sm btn-info' %></td>
-  <td><%= link_to "Edit Post", edit_post_path(post), data: { turbo_frame: "modal" }, class: 'btn btn-sm btn-warning' %></td>
+  <td><%= link_to "Show this post", post, data: { turbo_frame: "modal", turbo_action: 'advance' }, class: 'btn btn-sm btn-primary' %></td>
+  <td><%= link_to "Edit Post", edit_post_path(post), data: { turbo_frame: "modal", turbo_action: 'advance' }, class: 'btn btn-sm btn-warning' %></td>
   <td><%= button_to "Destroy this post", post_path(post), method: :delete, class: 'btn btn-sm btn-danger' %></td>
 </tr>
