@@ -11,8 +11,8 @@
   <table class="table">
     <thead class="thead-light">
       <tr>
-        <th scope="col">Title</th>
-        <th scope="col" colspan="4">Body</th>
+        <th scope="col"><%= sort_link(column: "title", label: "Title") %></th>
+        <th scope="col" colspan="4"><%= sort_link(column: "body", label: "Body") %></th>
       </tr>
     </thead>
     <tbody id="posts_table">
