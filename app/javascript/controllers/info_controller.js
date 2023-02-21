@@ -17,6 +17,6 @@ export default class extends Controller {
   hideModal(){
     this.element.closest('#modal').classList.add("hidden")
     this.element.closest('#modal').removeAttribute("src")
-    window.history.pushState({}, "SideInfo", "/posts");
+    window.history.pushState({}, "SideInfo", `/${ this.pathValue }`);
   }
 }
